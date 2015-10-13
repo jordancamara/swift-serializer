@@ -52,6 +52,8 @@ public class Serializable: NSObject {
                     setValue(propertiesDictionary, value: dataPropValue.base64EncodedStringWithOptions(.Encoding64CharacterLineLength), forKey: propName)
                 } else if let boolPropValue = propValue as? Bool {
                     setValue(propertiesDictionary, value: boolPropValue, forKey: propName)
+                } else if let uuidPropValue = propValue as? NSUUID {
+                    setValue(propertiesDictionary, value: uuidPropValue.UUIDString, forKey: propName)
                 } else {
                     setValue(propertiesDictionary, value: propValue, forKey: propName)
                 }
