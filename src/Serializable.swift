@@ -54,6 +54,10 @@ public class Serializable: NSObject {
                     setValue(propertiesDictionary, value: boolPropValue, forKey: propName)
                 } else if let uuidPropValue = propValue as? NSUUID {
                     setValue(propertiesDictionary, value: uuidPropValue.UUIDString, forKey: propName)
+                } else if let datePropValue = propValue as? NSDate {
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                    setValue(propertiesDictionary, value: dateFormatter.stringFromDate(datePropValue), forKey: propName)
                 } else {
                     setValue(propertiesDictionary, value: propValue, forKey: propName)
                 }
